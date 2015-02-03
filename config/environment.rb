@@ -1,1 +1,4 @@
+require 'bundler'
+Bundler.require
+
 
