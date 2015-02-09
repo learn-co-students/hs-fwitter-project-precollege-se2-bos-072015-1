@@ -7,11 +7,14 @@
   </head>
   <body> 
     <div class="container">
+      <h1>Welcome to Fwitter!</h1>
 
+      <h3>Fweets</h3>
       <% @tweets.each do |tweet| %>
-        <h1><%=tweet.user%> - <%= tweet.message %></h1>
+        <p><strong><%=tweet.user%></strong> - <%= tweet.message %></p>
       <% end %>
 
+      <h3>Add a Fweet</h3>
       <form action="/tweets" method="POST">
         User: <input class="form-control" type="text" name="user">
         Message: <input class="form-control" type="text" name="message">
