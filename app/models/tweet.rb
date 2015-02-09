@@ -21,3 +21,4 @@ class Tweet
   #   @user = user
   # end
 end
+
