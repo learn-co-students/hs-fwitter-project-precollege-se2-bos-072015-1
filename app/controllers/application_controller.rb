@@ -13,7 +13,7 @@ class ApplicationController < Sinatra::Base
     # tweet1 = Tweet.new("dfenjves", "Hello everyone!!")
     # tweet2 = Tweet.new("lyel", "I'm hungry!!")
     # tweet3 = Tweet.new("vanessa", "Me too!!")
-    @tweets = Tweet.all_messages
+    @tweets = Tweet.all
     erb :tweets
   end
 
@@ -21,7 +21,8 @@ class ApplicationController < Sinatra::Base
     # puts params
     # binding.pry
     # {"user"=>"Jackson", "message"=>"I don't know what to tweet."}
-    new_tweet = Tweet.new(params[:user],params[:message])
+    new_tweet = Tweet.new(:user => params[:user], :message => params[:message])
+    new_tweet.save
     redirect ('/')
   end
 
