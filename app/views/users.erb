@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Users</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Welcome to Fwitter!</h1>
+
+      <h3>Users</h3>
+      <% @users.each do |user| %>
+        <img src="<%= user.profile_pic %>"
+        <p>Name: <%=user.username%></p>
+        <p>Email: <%= user.email %></p>
+        <p>Age: <%= user.age %></p>
+      <% end %>
+
+      <h3>Add a User</h3>
+      <form action="/users" method="POST">
+        Username: <input class="form-control" type="text" name="username">
+        Email: <input class="form-control" type="text" name="email">
+        Age:
+        <input class="form-control" type="text" name="age">
+        Profile Pic (url):
+        <input class="form-control" type="text" name="profile_pic">
+        <input type="submit" class="btn btn-default">
+      </form>
+
+    </div>
+  </body>
+</html>

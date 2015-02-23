@@ -5,18 +5,24 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
   </head>
-  <body> 
+  <body>
     <div class="container">
       <h1>Welcome to Fwitter!</h1>
 
       <h3>Fweets</h3>
       <% @tweets.each do |tweet| %>
-        <p><strong><%=tweet.user%></strong> - <%= tweet.message %></p>
+        <p><strong><%=tweet.user.username %></strong> - <%= tweet.message %></p>
       <% end %>
 
       <h3>Add a Fweet</h3>
       <form action="/tweets" method="POST">
-        User: <input class="form-control" type="text" name="user">
+        <p>User:
+        <select name="user_id">
+          <% @users.each do |user| %>
+          <option value="<%= user.id %>" placeholder="select a user"><%= user.username %></option>
+          <% end %>
+        </select></p>
+
         Message: <input class="form-control" type="text" name="message">
         <input type="submit" class="btn btn-default">
       </form>

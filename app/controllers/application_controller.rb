@@ -1,5 +1,6 @@
 require './config/environment'
 require './app/models/tweet'
+require './app/models/user'
 require 'pry'
 
 class ApplicationController < Sinatra::Base
@@ -8,22 +9,28 @@ class ApplicationController < Sinatra::Base
     set :public_folder, 'public'
     set :views, 'app/views'
   end
-  
+
   get '/' do
-    # tweet1 = Tweet.new("dfenjves", "Hello everyone!!")
-    # tweet2 = Tweet.new("lyel", "I'm hungry!!")
-    # tweet3 = Tweet.new("vanessa", "Me too!!")
     @tweets = Tweet.all
+    @users = User.all
     erb :tweets
   end
 
   post '/tweets' do
-    # puts params
-    # binding.pry
-    # {"user"=>"Jackson", "message"=>"I don't know what to tweet."}
-    new_tweet = Tweet.new(:user => params[:user], :message => params[:message])
+    new_tweet = Tweet.new(:user_id => params[:user_id], :message => params[:message])
     new_tweet.save
     redirect ('/')
+  end
+
+  get '/users' do
+    @users = User.all
+    erb :users
+  end
+
+  post '/users' do
+    new_user = User.new(:username => params[:username], :email => params[:email], :age => params[:age], :profile_pic => params[:profile_pic])
+    new_user.save
+    redirect ('/users')
   end
 
 end
