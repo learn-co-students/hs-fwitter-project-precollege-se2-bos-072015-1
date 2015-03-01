@@ -7,14 +7,14 @@
   </head>
   <body>
     <div class="container">
-      <h1>Welcome to Fwitter!</h1>
+      <h1><a href="/">Welcome to Fwitter!</a></h1>
 
       <h3>Users</h3>
       <% @users.each do |user| %>
-        <img src="<%= user.profile_pic %>"
-        <p>Name: <%=user.username%></p>
-        <p>Email: <%= user.email %></p>
-        <p>Age: <%= user.age %></p>
+        <p><img src="<%= user.profile_pic %>"></p>
+        <p><strong>Name:</strong> <%=user.username%></p>
+        <p><strong>Email:</strong> <%= user.email %></p>
+        <p><strong>Age:</strong> <%= user.age %></p>
       <% end %>
 
       <h3>Add a User</h3>
