@@ -1,13 +1,6 @@
-<!doctype html>
-<html>
-  <head>
-    <title>Users</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-  </head>
-  <body>
-    <div class="container">
-      <h1><a href="/">Welcome to Fwitter!</a></h1>
+      <% if @logged_in_user %>
+        Welcome <%= @logged_in_user.username %>!
+      <% end %>
 
       <h3>Users</h3>
       <% @users.each do |user| %>
@@ -27,7 +20,3 @@
         <input class="form-control" type="text" name="profile_pic">
         <input type="submit" class="btn btn-default">
       </form>
-
-    </div>
-  </body>
-</html>

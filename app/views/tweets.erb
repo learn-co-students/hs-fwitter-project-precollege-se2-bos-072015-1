@@ -1,14 +1,3 @@
-<!doctype html>
-<html>
-  <head>
-    <title>Fwitter</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-  </head>
-  <body>
-    <div class="container">
-      <h1><a href="/">Welcome to Fwitter!</a></h1>
-
       <h3>Fweets</h3>
       <% @tweets.each do |tweet| %>
         <p><strong><%=tweet.user.username %></strong> - <%= tweet.message %></p>
@@ -16,17 +5,10 @@
 
       <h3>Add a Fweet</h3>
       <form action="/tweets" method="POST">
-        <p>User:
-        <select name="user_id">
-          <% @users.each do |user| %>
-          <option value="<%= user.id %>" placeholder="select a user"><%= user.username %></option>
-          <% end %>
-        </select></p>
+        <input type="hidden" name="user_id" value=<%= session[:user_id] %>>
 
         Message: <input class="form-control" type="text" name="message">
         <input type="submit" class="btn btn-default">
       </form>
 
-    </div>
-  </body>
-</html>
+
