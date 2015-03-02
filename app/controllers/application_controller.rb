@@ -13,6 +13,9 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/' do
+    if session[:user_id]
+      @logged_in_user = User.find(session[:user_id])
+    end
     @tweets = Tweet.all
     @users = User.all
     erb :tweets
@@ -44,13 +47,14 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/users' do
-    @logged_in_user = User.find(session[:user_id])
+    if session[:user_id]
+      @logged_in_user = User.find(session[:user_id])
+    end
     @users = User.all
     erb :users
   end
 
   post '/users' do
-    puts params
     new_user = User.new(:username => params[:username], :email => params[:email], :age => params[:age], :profile_pic => params[:profile_pic])
     new_user.save
     session[:user_id] = new_user.id
